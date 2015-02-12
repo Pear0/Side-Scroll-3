@@ -5,4 +5,7 @@ package pear.physics
  */
 trait BoundingBox {
 
+
+
+
 }
