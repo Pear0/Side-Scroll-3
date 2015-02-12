@@ -9,3 +9,5 @@ var ss = SideScroll();
 ss.img.reg("nebula", "nebula.jpg");
 
 ```
+
+<img src="char.png">
