@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Scala.js Tutorial</title>
+  </head>
+  <body>
+	<canvas id="cnvs" width="800px" height="600px"></canvas>
+    <!-- Include Scala.js compiled code -->
+    <script type="text/javascript" src="./target/scala-2.11/side-scroll-js2-fastopt.js"></script>
+    <!-- Run tutorial.webapp.TutorialApp -->
+    <script type="text/javascript">
+      var ss = pear.sidescroll.SideScroll();
+	  ss.debug = true;
+	  var ch;
+	  ss.load(function() {
+		
+		ss.img.reg("nebula", "char.png");
+		ss.img.reg("map", "map.png");
+		ss.img.reg("thing", "thing.png");
+		ss.img.reg("piece", "piece.png");
+		
+		ch = ss.createEntity(11, 26, "nebula");
+		
+		ch.moveable = true;
+		ch.debug = true;
+		ch.position.x += 10;
+		ch.add(ss.abilities.keyControl(3, 15));
+		
+		ch.ondeath.add(function(e) {
+			console.log(e + " died!");
+		});
+		
+		ch.onhitground.add(function(e) {
+			console.log(e + " hit the ground!");
+		});
+		
+		ss.world.add(ch);
+		
+		var thing = ss.createEntity(30, 30, "thing");
+		
+		thing.position.x = 425;
+		thing.position.y = 400;
+		thing.position.z = -1;
+		thing.gravity = 0;
+		
+		thing.add(function(e) {
+			var aabb = e.getAABB;
+			if (ss.contains(ss.world.intersectAABB(aabb), ch)) {
+				console.log("Collected");
+				e.destroy();
+			}
+			
+		});
+		
+		ss.world.add(thing);
+		
+		var pieces = [[125, 0], [200, 200]];
+		
+		for (var i = 0; i < pieces.length; i++) {
+			var piece = ss.createEntity(92, 180, "piece");
+			
+			piece.position.x = pieces[i][0];
+			piece.position.y = pieces[i][1];
+			piece.moveable = true;
+			
+			ss.world.add(piece);
+		}
+		
+		var map = ss.createEntity(2400, 32, "map");
+		
+		map.position.y = 600 - 32;
+		map.gravity = 0;
+		
+		ss.world.add(map);
+		
+		ss.start("cnvs");
+	  });
+    </script>
+  </body>
+</html>
