@@ -3,6 +3,7 @@ package pear.math
 import Constants._
 
 /**
+ * 
  * Created by William on 2/12/2015.
  */
 case class Vec2(x: Double = 0, y: Double = 0) {
