@@ -21,13 +21,13 @@ object Mat3 {
     0, 0, 1
   ))
 
-  def scale(x: Double, y: Double) = new Mat3(Array[Double](
+  def scale(x: Double, y: Double): Mat3 = new Mat3(Array[Double](
     x, 0, 0,
     0, y, 0,
     0, 0, 1
   ))
   
-  def scale(x: Double) = scale(x, x)
+  def scale(x: Double): Mat3 = scale(x, x)
   
   def rotate(rotation: Double) = {
     val rad = Math.toRadians(rotation)

@@ -14,8 +14,8 @@ object Collision {
       val aPoints = a.getPoints
       val bPoints = b.getPoints
       
-      val aLines = for (i <- 0 until aPoints.length - 1) yield new Line(aPoints(i), aPoints(i + 1))
-      val bLines = for (i <- 0 until bPoints.length - 1) yield new Line(bPoints(i), bPoints(i + 1))
+      val aLines = for (i <- 0 until aPoints.length - 1) yield Line(aPoints(i), aPoints(i + 1))
+      val bLines = for (i <- 0 until bPoints.length - 1) yield Line(bPoints(i), bPoints(i + 1))
 
       var intersections = List[Option[Vec2]]()
       for (aLine <- aLines; bLine <- bLines)
@@ -25,12 +25,9 @@ object Collision {
       if (valid.length == 0) None
       else Some(valid)
     }
-    
-    
+
   }
-  
-  
-  
+
 }
 
 trait Collision {
