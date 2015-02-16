@@ -36,7 +36,7 @@ trait Collision {
    * Checks for a collision between two bounding boxes using an implementation.
    * @param a the first collision box
    * @param b the second collision box
-   * @return Either None() which means no collision, Some(null) which means a collision at an unknown location, or 
+   * @return Either None() which means no collision or
    *         Some(List(Vec2)) which means that there are collisions and they are at the list of vec2 coordinates.
    */
   def check(a: BoundingBox, b: BoundingBox): Option[List[Vec2]]

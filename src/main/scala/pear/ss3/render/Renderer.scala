@@ -64,6 +64,12 @@ trait Renderer {
     }
   }
   
+  def drawVec2(vec: Vec2, c: Color = Color("#00FF00"), offX: Int = 0, offY: Int = 0): Unit = {
+    val p1 = Vec2(offX, offY)
+    val p2 = p1 + vec
+    drawLine(p1, p2, color)
+  }
+  
   def width: Int
   def height: Int
   
