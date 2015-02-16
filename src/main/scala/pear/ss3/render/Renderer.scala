@@ -32,6 +32,12 @@ trait Renderer {
     popContext()
   }
   
+  def rotate(deg: Double): Unit
+  
+  def scale(x: Double, y: Double): Unit
+  
+  def translate(x: Double, y: Double): Unit
+  
   def pushContext(): Unit
   
   def popContext(): Unit

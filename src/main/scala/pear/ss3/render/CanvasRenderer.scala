@@ -32,4 +32,10 @@ class CanvasRenderer(val ctx: C2D) extends Renderer{
 
   override def width: Int = ctx.canvas.width
   override def height: Int = ctx.canvas.height
+
+  override def rotate(deg: Double): Unit = ctx.rotate(Math.toRadians(deg))
+
+  override def translate(x: Double, y: Double): Unit = ctx.translate(x, y)
+
+  override def scale(x: Double, y: Double): Unit = ctx.scale(x, y)
 }
